@@ -1,0 +1,52 @@
+entity Member {
+	id Integer required,
+    name String required,
+    surname String required,
+    oib String required,
+    date_of_birth Instant required,
+    address String required,
+    cell_phone String required,
+    email String required,
+    date_created LocalDate required,
+    member_from LocalDate required,
+    active Boolean required,
+    date_inactive LocalDate,
+    reason_inactive ReasonInactive,
+    last_updated LocalDate required
+}
+
+enum ReasonInactive {
+	REQUEST, INACTIVE, KICKED
+}
+
+entity Customer {
+	id Integer required,
+    name String required,
+    oib String required,
+    cell_phone String,
+    email String required,
+    date_created LocalDate required,
+    last_updated LocalDate required
+}
+
+entity Invoice {
+	id Integer required,
+    invoice_num String required,
+    date_created Instant required,
+    name_of_service NameOfService required,
+    unit Integer required,
+    quantity Integer required,
+    price Integer required,
+    amount Integer required,
+    date_created LocalDate required
+}
+
+enum NameOfService {
+	WORKSHOP, EDUCATION, SPONSORSHIP
+}
+
+relationship OneToMany {
+	Customer{id} to Invoice
+}
+
+paginate Invoice with pagination

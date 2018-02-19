@@ -1,0 +1,74 @@
+
+<div *ngIf="member">
+    <h2><span>Member</span> {{member.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Name</span></dt>
+        <dd>
+            <span>{{member.name}}</span>
+        </dd>
+        <dt><span>Surname</span></dt>
+        <dd>
+            <span>{{member.surname}}</span>
+        </dd>
+        <dt><span>Oib</span></dt>
+        <dd>
+            <span>{{member.oib}}</span>
+        </dd>
+        <dt><span>Dateofbirth</span></dt>
+        <dd>
+            <span>{{member.dateofbirth | date:'medium'}}</span>
+        </dd>
+        <dt><span>Address</span></dt>
+        <dd>
+            <span>{{member.address}}</span>
+        </dd>
+        <dt><span>Cellphone</span></dt>
+        <dd>
+            <span>{{member.cellphone}}</span>
+        </dd>
+        <dt><span>Email</span></dt>
+        <dd>
+            <span>{{member.email}}</span>
+        </dd>
+        <dt><span>Datecreated</span></dt>
+        <dd>
+            <span>{{member.datecreated | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Memberfrom</span></dt>
+        <dd>
+            <span>{{member.memberfrom | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Active</span></dt>
+        <dd>
+            <span>{{member.active}}</span>
+        </dd>
+        <dt><span>Dateinactive</span></dt>
+        <dd>
+            <span>{{member.dateinactive | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Reasoninactive</span></dt>
+        <dd>
+            <span>{{member.reasoninactive}}</span>
+        </dd>
+        <dt><span>Lastupdated</span></dt>
+        <dd>
+            <span>{{member.lastupdated | date:'mediumDate'}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'member/'+ member.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>
