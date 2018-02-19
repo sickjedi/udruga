@@ -44,6 +44,10 @@ public class CacheConfiguration {
             cm.createCache(org.tvornica_znanosti.udruga.domain.User.class.getName() + ".authorities", jcacheConfiguration);
             cm.createCache(org.tvornica_znanosti.udruga.domain.PersistentToken.class.getName(), jcacheConfiguration);
             cm.createCache(org.tvornica_znanosti.udruga.domain.User.class.getName() + ".persistentTokens", jcacheConfiguration);
+            cm.createCache(org.tvornica_znanosti.udruga.domain.Member.class.getName(), jcacheConfiguration);
+            cm.createCache(org.tvornica_znanosti.udruga.domain.Customer.class.getName(), jcacheConfiguration);
+            cm.createCache(org.tvornica_znanosti.udruga.domain.Customer.class.getName() + ".ids", jcacheConfiguration);
+            cm.createCache(org.tvornica_znanosti.udruga.domain.Invoice.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

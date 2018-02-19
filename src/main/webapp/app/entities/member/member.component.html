@@ -1,0 +1,82 @@
+<div>
+    <h2>
+        <span>Members</span>
+        <button class="btn btn-primary float-right jh-create-entity create-member" [routerLink]="['/', { outlets: { popup: ['member-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Member
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="members">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Name</span></th>
+            <th><span>Surname</span></th>
+            <th><span>Oib</span></th>
+            <th><span>Dateofbirth</span></th>
+            <th><span>Address</span></th>
+            <th><span>Cellphone</span></th>
+            <th><span>Email</span></th>
+            <th><span>Datecreated</span></th>
+            <th><span>Memberfrom</span></th>
+            <th><span>Active</span></th>
+            <th><span>Dateinactive</span></th>
+            <th><span>Reasoninactive</span></th>
+            <th><span>Lastupdated</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let member of members ;trackBy: trackId">
+                <td><a [routerLink]="['../member', member.id ]">{{member.id}}</a></td>
+                <td>{{member.name}}</td>
+                <td>{{member.surname}}</td>
+                <td>{{member.oib}}</td>
+                <td>{{member.dateofbirth | date:'medium'}}</td>
+                <td>{{member.address}}</td>
+                <td>{{member.cellphone}}</td>
+                <td>{{member.email}}</td>
+                <td>{{member.datecreated | date:'mediumDate'}}</td>
+                <td>{{member.memberfrom | date:'mediumDate'}}</td>
+                <td>{{member.active}}</td>
+                <td>{{member.dateinactive | date:'mediumDate'}}</td>
+                <td>{{member.reasoninactive}}</td>
+                <td>{{member.lastupdated | date:'mediumDate'}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../member', member.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'member/'+ member.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'member/'+ member.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

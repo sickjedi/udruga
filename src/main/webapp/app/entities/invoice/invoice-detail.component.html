@@ -1,0 +1,56 @@
+
+<div *ngIf="invoice">
+    <h2><span>Invoice</span> {{invoice.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Invoicenum</span></dt>
+        <dd>
+            <span>{{invoice.invoicenum}}</span>
+        </dd>
+        <dt><span>Datecreated</span></dt>
+        <dd>
+            <span>{{invoice.datecreated | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Nameofservice</span></dt>
+        <dd>
+            <span>{{invoice.nameofservice}}</span>
+        </dd>
+        <dt><span>Unit</span></dt>
+        <dd>
+            <span>{{invoice.unit}}</span>
+        </dd>
+        <dt><span>Quantity</span></dt>
+        <dd>
+            <span>{{invoice.quantity}}</span>
+        </dd>
+        <dt><span>Price</span></dt>
+        <dd>
+            <span>{{invoice.price}}</span>
+        </dd>
+        <dt><span>Amount</span></dt>
+        <dd>
+            <span>{{invoice.amount}}</span>
+        </dd>
+        <dt><span>Customer</span></dt>
+        <dd>
+            <div *ngIf="invoice.customer">
+                <a [routerLink]="['/customer', invoice.customer?.id]">{{invoice.customer?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'invoice/'+ invoice.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>
